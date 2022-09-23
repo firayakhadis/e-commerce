@@ -41,8 +41,17 @@
                         </ul>
                     </li>
                 </ul>
-                <a type="button" role="button" href="{% url "basket:basket_summary" %}" class="btn
-                btn-outline-secondary">
+                <a type="button" role="button" href="{% url "basket:basket_summary" %}"
+                class="btn btn-outline-secondary">
+
+                {% with total_qty=basket|length %}
+                    {% if total_qty > 0 %}
+                        <div id="basket-qty" class="d-inline-flex">{{ total_qty }}</div>
+                    {% else %}
+                        0
+                    {% endif %}
+                 {% endwith %}
+
                 <div id="basket-qty" class="d-inline-flex">1</div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart"
                      viewBox="0 0 16 16">
